@@ -123,8 +123,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 # STATIC_ROOT = os.path.join(BASE_DIR,'/var/web')
 STATIC_URL = '/static/'
+
+# STATICFILES_DIRS and STATIC_ROOT Cannot exist at the same time
+# if use nginx load the static files,you need activate STATIC_ROOT
+# and use the command "python manage.py collectstatic" to config static files
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-    # '/var/www/static/',
+    # '/var/website/static',
 ]
-# STATIC_ROOT = BASE_DIR / 'static'
+
+# STATIC_ROOT = BASE_DIR / 'static'         # 也可以使用绝对路径'/var/website/static'

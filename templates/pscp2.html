@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ date }}准考证</title>
+    	<style>
+            .a-box{border-top: 1px solid black; border-bottom: 1px solid black; margin: 1px auto; width:900px; height:348px;font-weight:bold;page-break-inside:avoid;}
+            .title{text-align: center;height:40px;line-height:40px;font-weight: bold; font-size:24px; width: 100%; margin: 10px 0px 0px 0px;}
+            .left-box{width:425px;border:1px solid black; height:265px; float:left;}
+            .ks{text-align: center; font-weight: bold; font-size:20px; width: 100%; margin: 8px 0px 0px 0px;}
+            .jw{width:395px;height:215px; text-align:left; font-weight:lighter;margin: 8px 0px 0px 20px;}
+            .d{height:10px;}
+            .g{text-align:right;height:15px;font-weight:lighter;font-size:12px;font-weight:normal}
+            .right-box{width:470px; height:282px; float:left;font-weight:lighter;}
+            .table{float:left; text-align:left;height: 282px;}
+            .l{font-weight:bold;text-decoration:underline;padding-left:2px;}
+            .tr{height:30px}
+	    </style>
+</head>
+<body>
+{% if users %}
+    {% for user in users %}
+	<div class="a-box">
+		<div class="title">
+			国家普通话水平测试准考证
+		</div>
+		<div style="height:267px;">
+			<div class="left-box">
+				<div class="ks">
+					考试须知
+				</div>
+				<div class="jw">
+					测试场次与机位：　 　场　 　号
+					<div class="d"></div>
+					1.考生请核对个人信息。
+					<div class="d"></div>
+					如有错误,须联系考务人员登记更正。
+					<div class="d"></div>
+					2.请持本证与身份证完成以下流程：
+					<div class="d"></div>
+					指纹及证件照采集 → 备考 → 测试
+					<div class="d"></div>
+					3.请在指定机位按要求测试，关闭手机。
+					<div class="d"></div>
+					4.请妥善保管此证，凭此证领取“等级证书”。
+					<div class="d"></div>
+					<div class="d"></div>
+					<div class="g">
+						查询成绩、证书请关注微信公众号：吉林省普通话培训测试中心&nbsp;&nbsp;&nbsp;&nbsp;
+					</div>
+				</div>
+			</div>
+			<div class="right-box">
+				<table class="table">
+					<tbody>
+					<tr class="tr">
+						<td></td>
+						<td></td>
+						<td rowspan="5">
+							<div style="height:150px;width:100px; border: 1px solid black"></div>
+						</td>
+					</tr>
+					<tr class="tr">
+						<td style="width:81px;">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</td>
+						<td style="width:220px;">{{ user.name  }}</td>
+					</tr>
+					<tr class="tr">
+						<td>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</td>
+						<td>{{ user.sex }}</td>
+					</tr>
+					<tr class="tr">
+						<td>证件编号：</td>
+						<td>{{ user.id }}</td>
+					</tr>
+					<tr class="tr">
+						<td>准考证号：</td>
+						<td>{{ user.front }}<span class="l">{{ user.rear }}</span>
+						</td>
+					</tr>
+					<tr class="tr">
+						<td>工作单位：</td>
+						<td colspan="2">{{ user.workings }}</td>
+					</tr>
+					<tr class="tr">
+						<td>报到时间：</td>
+						<td colspan="2">{{ date }}&nbsp;&nbsp;&nbsp;&nbsp;{{ user.time}}</td>
+					</tr>
+					<tr class="tr">
+						<td>测试地点：</td>
+						<td colspan="2">{{ address }}</td>
+					</tr>
+					<tr class="tr">
+						<td colspan="3"></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+    {% endfor %}
+{% endif %}
+</body>
+</html>

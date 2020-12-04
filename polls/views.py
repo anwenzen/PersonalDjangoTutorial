@@ -1,7 +1,8 @@
 from django.http import JsonResponse, HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 
-from polls.models import Subject, Teacher
+from polls.models import Subject, Teacher, User
+from polls.utils import gen_random_code, Captcha, gen_md5_digest
 
 
 def show_subjects(request):
@@ -21,7 +22,7 @@ def show_teachers(request):
             'teachers': teachers
         })
     except (ValueError, Subject.DoesNotExist):
-        return redirect('/')
+        return redirect('/polls')
 
 
 def praise_or_criticize(request):
@@ -44,4 +45,32 @@ def praise_or_criticize(request):
 
 def login(request: HttpRequest) -> HttpResponse:
     hint = ''
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        if username and password:
+            password = gen_md5_digest(password)
+            user = User.objects.filter(username=username, password=password).first()
+            if user:
+                request.session['userid'] = user.no
+                request.session['username'] = user.username
+                return redirect('/polls')
+            else:
+                hint = '用户名或密码错误'
+        else:
+            hint = '请输入有效的用户名和密码'
     return render(request, 'polls/login.html', {'hint': hint})
+
+
+def logout(request):
+    """注销"""
+    request.session.flush()
+    return redirect('/polls')
+
+
+def get_captcha(request: HttpRequest) -> HttpResponse:
+    """验证码"""
+    captcha_text = gen_random_code()
+    request.session['captcha'] = captcha_text
+    image_data = Captcha.instance().generate(captcha_text)
+    return HttpResponse(image_data, content_type='image/png')

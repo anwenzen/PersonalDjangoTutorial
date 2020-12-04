@@ -1,41 +1,47 @@
-from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
-from django.urls import reverse
-from django.views import generic
+from django.http import JsonResponse, HttpRequest, HttpResponse
+from django.shortcuts import render, redirect
 
-from .models import Question, Choice
+from polls.models import Subject, Teacher
 
 
-class IndexView(generic.ListView):
-    template_name = "polls/index.html"
-    context_object_name = 'latest_question_list'
-
-    def get_queryset(self):
-        return Question.objects.order_by('-pub_date')[:5]
+def show_subjects(request):
+    subjects = Subject.objects.all().order_by('no')
+    return render(request, 'polls/subjects.html', {'subjects': subjects})
 
 
-class DetailView(generic.DetailView):
-    model = Question
-    template_name = 'polls/detail.html'
-
-
-class ResultsView(generic.DetailView):
-    model = Question
-    template_name = 'polls/results.html'
-
-
-def vote(request, question_id):
-    question = get_object_or_404(Question, pk=question_id)
+def show_teachers(request):
     try:
-        selected_choice = question.choice_set.get(pk=request.POST['choice'])
-    except (KeyError, Choice.DoesNotExist):
-        return render(request, 'polls/detail.html', {
-            'question': question,
-            'error_message': "You didn't select a choice.",
+        sno = int(request.GET.get('sno'))
+        teachers = []
+        if sno:
+            subject = Subject.objects.only('name').get(no=sno)
+            teachers = Teacher.objects.filter(subject=subject).order_by('no')
+        return render(request, 'polls/teachers.html', {
+            'subject': subject,
+            'teachers': teachers
         })
-    else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+    except (ValueError, Subject.DoesNotExist):
+        return redirect('/')
 
 
+def praise_or_criticize(request):
+    """好评"""
+    try:
+        tno = int(request.GET.get('tno'))
+        teacher = Teacher.objects.get(no=tno)
+        if request.path.startswith('/polls/praise'):
+            teacher.good_count += 1
+            count = teacher.good_count
+        else:
+            teacher.bad_count += 1
+            count = teacher.bad_count
+        teacher.save()
+        data = {'code': 20000, 'mesg': '操作成功', 'count': count}
+    except (ValueError, Teacher.DoseNotExist):
+        data = {'code': 20001, 'mesg': '操作失败'}
+    return JsonResponse(data)
+
+
+def login(request: HttpRequest) -> HttpResponse:
+    hint = ''
+    return render(request, 'polls/login.html', {'hint': hint})

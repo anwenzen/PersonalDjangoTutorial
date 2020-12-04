@@ -78,7 +78,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3',
         # 'NAME': BASE_DIR / 'db.sqlite3',
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vote',
+        'NAME': 'polls',
         'USER': 'father',
         'PASSWORD': 'hellokitty.618',
         'HOST': '127.0.0.1',
@@ -124,9 +124,11 @@ USE_TZ = True
 # STATIC_ROOT = os.path.join(BASE_DIR,'/var/web')
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS and STATIC_ROOT Cannot exist at the same time
-# if use nginx load the static files,you need activate STATIC_ROOT
-# and use the command "python manage.py collectstatic" to config static files
+"""
+STATICFILES_DIRS and STATIC_ROOT Cannot exist at the same time
+if use nginx load the static files,you need activate STATIC_ROOT
+and use the command "python manage.py collectstatic" to config static files
+"""
 STATICFILES_DIRS = [
     BASE_DIR / "static",
     # '/var/website/static',

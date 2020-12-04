@@ -24,6 +24,6 @@ urlpatterns = [
     path('pscp/', PersonalDjangoTutorial.views.pscp),
     path('downloads/', PersonalDjangoTutorial.views.downloads),
     # path('downloads/<str:dir_path>', PersonalDjangoTutorial.views.downloads),
-    # path('polls/', include('polls.urls')),
+    path('polls/', include('polls.urls')),
     path('blog/', include('blog.urls')),
 ]

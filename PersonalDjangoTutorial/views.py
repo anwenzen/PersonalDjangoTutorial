@@ -1,6 +1,7 @@
 import os
 import shutil
 import pandas as pd
+import pdfkit
 
 from django.http import FileResponse
 from django.shortcuts import render
@@ -59,6 +60,13 @@ def downloads(request, dir_path=None):
 
 @csrf_protect
 def pscp(request):
+    """
+    pip install pandas
+    pip install pdfkit
+    pip install xlrd
+    当你在终端执行一个带GUI功能的程序的时候，如果DISPLAY变量没有定义，就会报相应的错误。特别是在Linux上
+    tips: export QT_QPA_PLATFORM='offscreen'
+    """
     if request.method == "POST":
         date = request.POST['date']
         address = request.POST["address"]
@@ -84,7 +92,7 @@ def pscp(request):
                                   "rear": str(data.iloc[j * n + i][3])[-4:],
                                   "workings": data.iloc[j * n + i][8],
                                   "time": data.iloc[j * n + i][6]})
-            import pdfkit
+
             options = {
                 'page-size': 'A4',
                 'margin-top': '0in',

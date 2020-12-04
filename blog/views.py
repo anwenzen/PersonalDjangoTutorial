@@ -39,3 +39,8 @@ def post(request):
                           )
         sub_paper.save()
         return render(request, 'blog/post.html')
+
+
+def show_post(request):
+
+    return render(request, )

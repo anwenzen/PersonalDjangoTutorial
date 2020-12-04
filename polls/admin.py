@@ -1,24 +1,23 @@
-import datetime
-
 from django.contrib import admin
-from django.utils import timezone
 
-from .models import Choice, Question
-
-
-class ChoiceInline(admin.TabularInline):
-    model = Choice
-    extra = 3
+from polls.models import Subject, Teacher
 
 
-class QuestionAdmin(admin.ModelAdmin):
-    fieldsets = [
-        (None,               {'fields': ['question_text']}),
-        ('Date information', {'fields': ['pub_date'], 'classes': ['collapse']}),
-    ]
-    inlines = [ChoiceInline]
-    list_display = ('question_text', 'pub_date', 'was_published_recently')
-    list_filter = ['pub_date']
+class SubjectModelAdmin(admin.ModelAdmin):
+    related_name = "学科"
+    list_display = ('no', 'name', 'intro', 'is_hot')
+    search_fields = ('name',)
+    ordering = ('no',)
+
+    def __str__(self):
+        return '123'
 
 
-admin.site.register(Question, QuestionAdmin)
+class TeacherModelAdmin(admin.ModelAdmin):
+    list_display = ('no', 'name', 'sex', 'birth', 'good_count', 'bad_count', 'subject')
+    search_fields = ('name',)
+    ordering = ('no',)
+
+
+admin.site.register(Subject, SubjectModelAdmin)
+admin.site.register(Teacher, TeacherModelAdmin)

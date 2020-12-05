@@ -31,8 +31,8 @@
 <body>
    <div id="container">
        <div class="user">
-           <a href="login.html">用户登录</a>
-           <a href="register.html">快速注册</a>
+           <a href="/polls/login">用户登录</a>
+           <a href="/polls/register">快速注册</a>
        </div>
        <h1>扣丁学堂所有学科</h1>
        <hr>
@@ -40,7 +40,7 @@
            {% for subject in subjects %}
            <dl>
                <dt>
-                   <a href="/teachers/?sno={{ subject.no }}">{{ subject.name }}</a>
+                   <a href="/polls/teachers/?sno={{ subject.no }}">{{ subject.name }}</a>
                    {% if subject.is_hot %}
                    <img src="/static/images/hot-icon-small.png">
                    {% endif %}

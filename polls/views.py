@@ -25,21 +25,23 @@ def show_teachers(request):
         return redirect('/polls')
 
 
-def praise_or_criticize(request):
-    """好评"""
-    try:
-        tno = int(request.GET.get('tno'))
-        teacher = Teacher.objects.get(no=tno)
-        if request.path.startswith('/polls/praise'):
-            teacher.good_count += 1
-            count = teacher.good_count
-        else:
-            teacher.bad_count += 1
-            count = teacher.bad_count
-        teacher.save()
-        data = {'code': 20000, 'mesg': '操作成功', 'count': count}
-    except (ValueError, Teacher.DoseNotExist):
-        data = {'code': 20001, 'mesg': '操作失败'}
+def praise_or_criticize(request: HttpRequest) -> HttpResponse:
+    if request.session.get('userid'):
+        try:
+            tno = int(request.GET.get('tno'))
+            teacher = Teacher.objects.get(no=tno)
+            if request.path.startswith('/polls/praise/'):
+                teacher.good_count += 1
+                count = teacher.good_count
+            else:
+                teacher.bad_count += 1
+                count = teacher.bad_count
+            teacher.save()
+            data = {'code': 20000, 'mesg': '投票成功', 'count': count}
+        except (ValueError, Teacher.DoesNotExist):
+            data = {'code': 20001, 'mesg': '投票失败'}
+    else:
+        data = {'code': 20002, 'mesg': '请先登录'}
     return JsonResponse(data)
 
 

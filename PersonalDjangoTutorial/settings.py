@@ -135,3 +135,14 @@ STATICFILES_DIRS = [
 ]
 
 # STATIC_ROOT = BASE_DIR / 'static'         # 也可以使用绝对路径'/var/website/static'
+
+# 配置会话的超时时间为1天（86400秒）
+SESSION_COOKIE_AGE = 86400
+
+# 设置为True在关闭浏览器窗口时session就过期
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+# 配置将会话对象放到缓存中存储
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+# 配置使用哪一组缓存来保存会话
+SESSION_CACHE_ALIAS = 'default'

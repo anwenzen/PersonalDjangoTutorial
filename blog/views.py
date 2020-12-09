@@ -6,7 +6,13 @@ from .models import Paper
 
 
 class Index(generic.TemplateView):
+    paper_list = Paper.objects.all()
     template_name = 'blog/index.html'
+
+
+def index(request):
+    paper_list = Paper.objects.all()
+    return render(request, 'blog/index.html', {'paper_list': paper_list[:10:-1]})
 
 
 class Contact(generic.TemplateView):
@@ -41,6 +47,6 @@ def post(request):
         return render(request, 'blog/post.html')
 
 
-def show_post(request):
-
-    return render(request, )
+def show_post(request, paper_name):
+    one_of_paper = Paper.objects.get(title=paper_name)
+    return render(request, 'blog/show_post.html', {'paper': one_of_paper})

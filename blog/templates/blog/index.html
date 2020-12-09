@@ -49,7 +49,7 @@
                 {#            <a class="nav-link" href="about.html">About</a>#}
                 {#          </li>#}
                           <li class="nav-item">
-                            <a class="nav-link" href="post.html">Sample Post</a>
+                            <a class="nav-link" href="post.html">Sample Creating</a>
                           </li>
                 {#          <li class="nav-item">#}
                 {#            <a class="nav-link" href="contact.html">Contact</a>#}
@@ -79,21 +79,23 @@
     <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
 
-            {% if container %}
+            {% if paper_list %}
+                {% for paper in paper_list %}
                 <div class="post-preview">
-                    <a href="post.html">
+                    <a href="/blog/show/{{ paper.title }}">
                         <h2 class="post-title">
-                            {{ container.title }}
+                            {{ paper.title }}
                         </h2>
                         <h3 class="post-subtitle">
-                            {{ container.details }}
+                            {{ paper.details }}
                         </h3>
                     </a>
                     <p class="post-meta">Posted by
-                        <a href="{{ container.url }}">{{ container.author }}</a>
-                        on {{ container.date }}</p>
+                        <a href="#">{{ paper.author }}</a>
+                        on {{ paper.date }}</p>
                 </div>
                 <hr>
+                {% endfor %}
             {% else %}
 
 
@@ -144,7 +146,7 @@
             {#        <hr>#}
             <!-- Pager -->
             <div class="clearfix">
-                <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+                <a class="btn btn-primary float-right" href="#">Get More &rarr;</a>
             </div>
         </div>
     </div>

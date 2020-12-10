@@ -19,10 +19,6 @@ class Contact(generic.TemplateView):
     template_name = 'blog/contact.html'
 
 
-# class Post(generic.TemplateView):
-#     template_name = 'blog/post.html'
-
-
 class About(generic.TemplateView):
     template_name = 'blog/about.html'
 

@@ -1,36 +1,96 @@
-<div>
-    <div class="container" style="padding: 1px 1px 30px 1px;">
-        <form method="post" action="#">{% csrf_token %}
-            <hr>
-            {% if folder  or files %}
-                {% for item in folder %}
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"
-                                                   name="downloads{{ item.value }}">
-                        <label class="form-check-label" for="formCheck-3">
-                            <i class="icon ion-android-folder"></i>
-                            &nbsp;<a href="/downloads{{ item.dir_path }}">{{ item.name }}</a>
-                        </label>
-                    </div>
-                    <hr>
-                {% endfor %}
+<!DOCTYPE html>
+<html>
 
-                {% for item in files %}
-                    <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"
-                                                   name="downloads/{{ item.url }}">
-                        <label class="form-check-label" for="formCheck-1">
-                            <i class="icon ion-android-list"></i>
-                            &nbsp;<a href="#downloading/{{ item.url }}">{{ item.name }}</a>{{ item.size }}
-                        </label>
-                    </div>
-                    <hr>
-                {% endfor %}
-                <input class="form-control float-left" type="submit" style="width: 200px;margin: 0px 20px;"
-                       name="delete"
-                       value="删除所选文件">
-            {% else %}
-                <p class="copyright">Nothing could to Download.</p>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Downloads - WEN-ZENG WebSite</title>
+    <meta name="description" content="WEN-ZENG BLOG">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="{% static 'blog/fonts/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/fonts/simple-line-icons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'blog/css/Footer-Basic.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="{% static 'blog/css/smoothproducts.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="#">WEN-ZENG WEBSITE</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse"
+                id="navcol-1">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
+                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog-post-list.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="login.html">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page testimonials"></main>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center" style="margin: 10px 0px;">Select something on your want</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                        
+    <div>
+        <div class="container" style="padding: 1px 1px 30px 1px;">
+            <form method="post" action="#">{% csrf_token %}
                 <hr>
-            {% endif %}
-        </form>
+                {% if folder  or files %}
+                    {% for item in folder %}
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-3"
+                                                       name="downloads{{ item.value }}">
+                            <label class="form-check-label" for="formCheck-3">
+                                <i class="icon ion-android-folder"></i>
+                                &nbsp;<a href="/downloads{{ item.dir_path }}">{{ item.name }}</a>
+                            </label>
+                        </div>
+                        <hr>
+                    {% endfor %}
+    
+                    {% for item in files %}
+                        <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"
+                                                       name="downloads/{{ item.url }}">
+                            <label class="form-check-label" for="formCheck-1">
+                                <i class="icon ion-android-list"></i>
+                                &nbsp;<a href="#downloading/{{ item.url }}">{{ item.name }}</a>&nbsp;&nbsp;{{ item.size }}
+                            </label>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                    <input class="form-control float-left" type="submit" style="width: 200px;margin: 0px 20px;"
+                           name="delete"
+                           value="删除所选文件">
+                {% else %}
+                    <p class="copyright">Nothing could to Download.</p>
+                    <hr>
+                {% endif %}
+            </form>
+        </div>
     </div>
-</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include 'Footer.html' %}
+
+    <script src="{% static 'blog/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blog/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="{% static 'blog/js/smoothproducts.min.js' %}"></script>
+    <script src="{% static 'blog/js/theme.js' %}"></script>
+</body>
+
+</html>

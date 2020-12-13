@@ -6,20 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>NO FOUND</title>
     <meta name="description" content="WEN-ZENG BLOG">
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'blog/bootstrap/css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
-    <link rel="stylesheet" href="{% static 'blog/fonts/fontawesome-all.min.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/fonts/ionicons.min.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/fonts/simple-line-icons.min.css' %}">
-    <link rel="stylesheet" href="{% static 'blog/css/Footer-Basic.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
-    <link rel="stylesheet" href="{% static 'blog/css/smoothproducts.css' %}">
+    {% include 'Link.html' %}
+    <link rel="stylesheet" href="{% static 'index/css/404.css' %}">
+
 </head>
 
 <body>
 <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
-    <div class="container"><a class="navbar-brand logo" href="#">WEN-ZENG BLOG</a>
+    <div class="container"><a class="navbar-brand logo" href="#">WEN-ZENG WEBSITE</a>
         <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span
                 class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse"
@@ -67,11 +61,9 @@
         </div>
     </section>
 </main>
-<script src="{% static 'blog/js/jquery.min.js' %}"></script>
-<script src="{% static 'blog/bootstrap/js/bootstrap.min.js' %}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
-<script src="{% static 'blog/js/smoothproducts.min.js' %}"></script>
-<script src="{% static 'blog/js/theme.js' %}"></script>
+
+{% include 'Footer.html' %}
+
 </body>
 
 </html>

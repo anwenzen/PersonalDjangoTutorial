@@ -1,98 +1,118 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
-{% load static %}
-    <head>
-        <meta charset="utf-8" />
-        <title>WEN-ZENG WEBSITE</title>
-        <link rel="icon" type="image/x-icon" href="{% static 'index/img/favicon.ico' %}" />
-        <script src="{% static 'index/js/all.js' %}" crossorigin="anonymous"></script>
 
-        <link href="{% static 'index/css/styles.css' %}" rel="stylesheet" />
-        <link href="{% static 'index/css/Footer.css' %}" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        {% include 'Navigation.html' %}
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container d-flex h-100 align-items-center">
-                <div class="mx-auto text-center">
-                    <h1 class="mx-auto my-0 text-uppercase">WELCOME</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">不要让过去，耽误来未来，且行且珍惜</h2>
+<head>
+    <meta charset="utf-8"/>
+    <title>WEN-ZENG WEBSITE</title>
 
-                    <a class="btn btn-primary js-scroll-trigger" href="#blog">GET STARTS</a>
-                </div>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'index/img/favicon.ico' %}"/>
+    <script src="{% static 'index/js/all.js' %}" crossorigin="anonymous"></script>
+    <link href="{% static 'index/css/styles.css' %}" rel="stylesheet"/>
+    <link href="{% static 'index/css/Footer.css' %}" rel="stylesheet"/>
+</head>
+<body id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">WEN-ZENG WEBSITE</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="/blog">Simple Blog</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Masthead-->
+<header class="masthead">
+    <div class="container d-flex h-100 align-items-center">
+        <div class="mx-auto text-center">
+            <h1 class="mx-auto my-0 text-uppercase">WELCOME</h1>
+            <h2 class="text-white-50 mx-auto mt-2 mb-5">不要让过去，耽误来未来，且行且珍惜</h2>
+
+            <a class="btn btn-primary js-scroll-trigger" href="#blog">GET STARTS</a>
+        </div>
+    </div>
+</header>
+
+<!-- Projects-->
+<section class="projects-section bg-light" id="blog">
+    <div class="container">
+        <!-- Featured Project Row-->
+        <div class="row align-items-center no-gutters mb-4 mb-lg-5">
+            <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0"
+                                                src="{% static 'index/img/projects.jpeg' %}" alt=""/></div>
+            <div class="col-xl-4 col-lg-5">
+                <a href="blog/">
+                    <div class="featured-text text-center text-lg-left">
+                        <h4>个人博客</h4>
+                        <p class="text-black-50 mb-0">This is a simple personal blog. base on Python, Django and
+                            Caddy.<br/>
+                            这是我的个人实践的博客，基于Python、Django、Caddy。其他功能在做了，进度0%。</p>
+                    </div>
+                </a>
             </div>
-        </header>
+        </div>
+        <!-- Project One Row-->
+        <div class="row justify-content-center no-gutters mb-5 mb-lg-0" id="projects">
+            <div class="col-lg-6"><img class="img-fluid" src="{% static 'index/img/pscp.png' %}" alt=""/></div>
+            <div class="col-lg-6">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <a href="pscp/">
+                            <div class="project-text w-100 my-auto text-center text-lg-left">
+                                <h4 class="text-white">普通话测试准考证生成</h4>
+                                <p class="mb-0 text-white-50">
+                                    只需要导入考生信息表，通过从新排序，就会生成适合打印、切割的准考证PDF文档
+                                    <br/>
+                                    （依赖于Pandas、wkhtmltopdf）
+                                </p>
 
-        <!-- Projects-->
-        <section class="projects-section bg-light" id="blog">
-            <div class="container">
-                <!-- Featured Project Row-->
-                <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-                    <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="{% static 'index/img/projects.jpeg' %}" alt="" /></div>
-                    <div class="col-xl-4 col-lg-5">
-                        <a href="blog/">
-                        <div class="featured-text text-center text-lg-left">
-                            <h4>个人博客</h4>
-                            <p class="text-black-50 mb-0">This is a simple personal blog. base on Python, Django and Caddy.<br/>
-                                这是我的个人实践的博客，基于Python、Django、Caddy。其他功能在做了，进度0%。</p>
-                        </div>
+                                <hr class="d-none d-lg-block mb-0 ml-0"/>
+                            </div>
                         </a>
                     </div>
                 </div>
-                <!-- Project One Row-->
-                <div class="row justify-content-center no-gutters mb-5 mb-lg-0" id="projects">
-                    <div class="col-lg-6"><img class="img-fluid" src="{% static 'index/img/pscp.png' %}" alt="" /></div>
-                    <div class="col-lg-6">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <a href="pscp/">
-                                <div class="project-text w-100 my-auto text-center text-lg-left">
-                                    <h4 class="text-white">普通话测试准考证生成</h4>
-                                    <p class="mb-0 text-white-50">
-                                        只需要导入考生信息表，通过从新排序，就会生成适合打印、切割的准考证PDF文档
-                                        <br/>
-                                        （依赖于Pandas、wkhtmltopdf）
-                                    </p>
-
-                                    <hr class="d-none d-lg-block mb-0 ml-0" />
-                                </div>
-                                </a>
+            </div>
+        </div>
+        <!-- Project Two Row-->
+        <div class="row justify-content-center no-gutters">
+            <div class="col-lg-6"><img class="img-fluid" src="{% static 'index/img/downloads.jpg' %}" alt=""/></div>
+            <div class="col-lg-6 order-lg-first">
+                <div class="bg-black text-center h-100 project">
+                    <div class="d-flex h-100">
+                        <a href="/downloads?path=">
+                            <div class="project-text w-100 my-auto text-center text-lg-right">
+                                <h4 class="text-white">Downloads</h4>
+                                <p class="mb-0 text-white-50">
+                                    Something could to downloads,
+                                    if something in the folder.
+                                    And manage the folder.
+                                </p>
+                                <hr class="d-none d-lg-block mb-0 mr-0"/>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Project Two Row-->
-                <div class="row justify-content-center no-gutters">
-                    <div class="col-lg-6"><img class="img-fluid" src="{% static 'index/img/downloads.jpg' %}" alt="" /></div>
-                    <div class="col-lg-6 order-lg-first">
-                        <div class="bg-black text-center h-100 project">
-                            <div class="d-flex h-100">
-                                <a href="/downloads?path=">
-                                <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Downloads</h4>
-                                    <p class="mb-0 text-white-50">
-                                        Something could to downloads,
-                                        if something in the folder.
-                                        And manage the folder.
-                                    </p>
-                                    <hr class="d-none d-lg-block mb-0 mr-0" />
-                                </div>
-                                </a>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-        <!-- Footer-->
-        {% include 'Footer.html' %}
+<!-- Footer-->
+{% include 'Footer.html' %}
 
-        <script src="{% static 'index/js/jquery.min.js' %}"></script>
-        <script src="{% static 'index/js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'index/js/jquery.easing.min.js' %}"></script>
-        <script src="{% static 'index/js/scripts.js' %}"></script>
-    </body>
+<script src="{% static 'index/js/jquery.min.js' %}"></script>
+<script src="{% static 'index/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'index/js/jquery.easing.min.js' %}"></script>
+<script src="{% static 'index/js/scripts.js' %}"></script>
+</body>
 </html>

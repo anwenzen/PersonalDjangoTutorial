@@ -15,12 +15,8 @@ def index(request):
     return render(request, 'blog/index.html', {'paper_list': paper_list[:10:-1]})
 
 
-class Contact(generic.TemplateView):
-    template_name = 'blog/contact.html'
-
-
-class About(generic.TemplateView):
-    template_name = 'blog/about.html'
+def login(requests):
+    return render(requests, 'blog/login.html')
 
 
 def paper(request, paper_id):

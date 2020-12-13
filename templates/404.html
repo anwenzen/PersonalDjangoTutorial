@@ -7,6 +7,7 @@
     <title>NO FOUND</title>
     <meta name="description" content="WEN-ZENG BLOG">
     {% include 'Link.html' %}
+    {% load static %}
     <link rel="stylesheet" href="{% static 'index/css/404.css' %}">
 
 </head>
@@ -22,7 +23,7 @@
             <div class="stars">
                 <div class="central-body">
                     <img class="image-404" src="{% static 'index/img/404/404.svg' %}" width="300px">
-                    <a href="https://muppers.com" class="btn-go-home" target="_blank">VOLVER AL INICIO</a>
+                    <span class="btn-go-home">NO FOUND</span>
                 </div>
                 <div class="objects">
                     <img class="object_rocket" src="{% static 'index/img/404/rocket.svg' %}" width="40px">
@@ -40,7 +41,6 @@
                     <div class="star"></div>
                     <div class="star"></div>
                     <div class="star"></div>
-
                 </div>
 
             </div>

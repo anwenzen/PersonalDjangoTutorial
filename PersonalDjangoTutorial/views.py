@@ -14,6 +14,10 @@ def index(request):
     return render(request, 'index.html')
 
 
+def no_found(requests):
+    return render(requests, '404.html')
+
+
 @csrf_protect
 def downloads(request, dir_path=None):
     path = os.path.join(BASE_DIR, 'downloads')

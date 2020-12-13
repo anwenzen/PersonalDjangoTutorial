@@ -23,6 +23,7 @@ urlpatterns = [
     path('', PersonalDjangoTutorial.views.index),
     path('pscp/', PersonalDjangoTutorial.views.pscp),
     path('downloads/', PersonalDjangoTutorial.views.downloads),
+    path('404/', PersonalDjangoTutorial.views.no_found),
     # path('downloads/<str:dir_path>', PersonalDjangoTutorial.views.downloads),
     path('polls/', include('polls.urls')),
     path('blog/', include('blog.urls')),

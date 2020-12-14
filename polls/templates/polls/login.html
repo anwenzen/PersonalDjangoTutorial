@@ -69,7 +69,7 @@
             </div>
             <div class="input">
                 <label>验证码：<input type="text" name="captcha"></label>
-                <img id="code" src="/polls/get_captcha/" alt="" width="150" height="40">
+                <img id="code" src="/polls/get_captcha/" alt="" width="150" height="40">{{ request.session.captcha }}
             </div>
         </fieldset>
         <div class="button">

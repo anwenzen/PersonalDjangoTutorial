@@ -7,10 +7,14 @@
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog-post-list.html">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/blog/login">Login</a></li>
+{#                    <li class="nav-item"><a class="nav-link" href="features.html">Features</a></li>#}
+                    <li class="nav-item"><a class="nav-link" href="/blog/index">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/blog/post-list">Blog-list</a></li>
+                    {% if request.session.userid %}
+                        <li class="nav-item"><a class="nav-link" href="/blog/login">Logout</a></li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="/blog/login">Login</a></li>
+                    {% endif %}
                 </ul>
             </div>
         </div>

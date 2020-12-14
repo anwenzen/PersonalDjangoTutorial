@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
 from .models import Paper
 
@@ -15,30 +15,25 @@ def index(request):
     return render(request, 'blog/index.html', {'paper_list': paper_list[:10:-1]})
 
 
-def login(requests):
-    return render(requests, 'blog/login.html')
+def registration(request):
+    return render(request, 'blog/registration.html')
 
 
-def paper(request, paper_id):
-    if paper_id:
-        pass
-    return render(request, 'blog/post.html', {})
+def login(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+        passwd = request.POST.get('passwd')
+    return render(request, 'blog/login.html')
+
+
+def logout(request):
+    request.session.flush()
+    return redirect('/blog/index')
 
 
 def post(request):
-    if request.method == "GET":
-        return render(request, 'blog/post.html')
-    if request.method == "POST":
-        sub_paper = Paper(title=request.POST['title'],
-                          details=request.POST['paper'][:100],
-                          content=request.POST['paper'],
-                          date=request.POST['date'],
-                          author=request.POST['author']
-                          )
-        sub_paper.save()
-        return render(request, 'blog/post.html')
+    return render(request, 'blog/blog-post.html')
 
 
-def show_post(request, paper_name):
-    one_of_paper = Paper.objects.get(title=paper_name)
-    return render(request, 'blog/show_post.html', {'paper': one_of_paper})
+def post_list(request):
+    return render(request, 'blog/blog-post-list.html')

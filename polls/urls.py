@@ -11,4 +11,5 @@ urlpatterns = [
     path('login/', views.login),
     path('get_captcha/', views.get_captcha),
     path('logout/', views.logout),
+    path('test', views.test),
 ]

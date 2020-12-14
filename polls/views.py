@@ -1,6 +1,6 @@
 from django.http import JsonResponse, HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
-
+from django.views.decorators.csrf import csrf_exempt
 from polls.models import Subject, Teacher, User
 from polls.utils import gen_random_code, Captcha, gen_md5_digest
 
@@ -48,6 +48,8 @@ def praise_or_criticize(request: HttpRequest) -> HttpResponse:
 def login(request: HttpRequest) -> HttpResponse:
     hint = ''
     if request.method == 'POST':
+        if str(request.POST.get('captcha')).upper() != str(request.session.get('captcha')).upper():
+            return render(request, 'polls/login.html', {'hint': '验证码错误'})
         username = request.POST.get('username')
         password = request.POST.get('password')
         if username and password:
@@ -76,3 +78,10 @@ def get_captcha(request: HttpRequest) -> HttpResponse:
     request.session['captcha'] = captcha_text
     image_data = Captcha.instance().generate(captcha_text)
     return HttpResponse(image_data, content_type='image/png')
+
+
+@csrf_exempt
+def test(request):
+    for i in request.POST:
+        print(i, request.POST.get(i))
+    return HttpResponse(request)

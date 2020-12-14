@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import generic
-from .models import Paper
+from .models import Paper, Message
 
 # Create your views here.
 
@@ -37,3 +37,12 @@ def post(request):
 
 def post_list(request):
     return render(request, 'blog/blog-post-list.html')
+
+
+def contact(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        message = request.POST.get('message')
+        Message(name=name, message=message).save()
+        request.method = "GET"
+    return render(request, 'blog/contact-us.html', {'message': Message.objects.all()})

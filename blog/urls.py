@@ -9,6 +9,6 @@ urlpatterns = [
     path('post', views.post, name='post'),
     path('post-list', views.post_list, name='post-list'),
     path('registration', views.registration, name='registration'),
-    # path('contact.html', views.Contact.as_view(), name='contact'),
+    path('contact', views.contact, name='contact'),
     # path('show/<str:paper_name>', views.show_post, name='show_paper'),
 ]

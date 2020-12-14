@@ -1,6 +1,11 @@
 from django.db import models
 
 
+class Message(models.Model):
+    name = models.CharField(max_length=20, verbose_name='留言者名字')
+    message = models.CharField(max_length=150, verbose_name='留言内容')
+
+
 class Paper(models.Model):
     title = models.CharField(max_length=30, verbose_name='标题')
     details = models.CharField(max_length=100, verbose_name='详细信息')

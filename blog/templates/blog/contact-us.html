@@ -6,28 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Contact Us - WEN-ZENG BLOG</title>
     <meta name="description" content="WEN-ZENG BLOG">
-{% include 'Link.html' %}
+    {% include 'Link.html' %}
 </head>
 
 <body>
 {% include 'Navigation.html' %}
-    <main class="page contact-us-page">
-        <section class="clean-block clean-form dark">
-            <div class="container">
-                <div class="block-heading">
-                    <h2 class="text-info">Contact Us</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-                </div>
-                <form>
-                    <div class="form-group"><label>Name</label><input class="form-control" type="text"></div>
-                    <div class="form-group"><label>Subject</label><input class="form-control" type="text"></div>
-                    <div class="form-group"><label>Email</label><input class="form-control" type="email"></div>
-                    <div class="form-group"><label>Message</label><textarea class="form-control"></textarea></div>
-                    <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Send</button></div>
-                </form>
+<main class="page contact-us-page">
+    <section class="clean-block clean-form dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">留言板</h2>
             </div>
-        </section>
-    </main>
+            <form action="#" method="post">{% csrf_token %}
+                <div class="form-group"><label>Your Name</label><input class="form-control" type="text" name="name"
+                                                                       maxlength="20" required></div>
+                {#<div class="form-group"><label>Subject</label><input class="form-control" type="text"></div>#}
+                {#<div class="form-group"><label>Email</label><input class="form-control" type="email"></div>#}
+                <div class="form-group"><label>Message</label><textarea class="form-control" rows="5" name="message"
+                                                                        maxlength="150"
+                                                                        required></textarea></div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block" type="submit">留下心里话</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</main>
+
+<section class="clean-block clean-form dark">
+    <div class="container">
+        <form>
+        <hr>
+            {% if message %}
+                {% for item in message %}
+                    <label>{{ item.name }}</label> : {{ item.message }}
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <span>哎呀，还没有人给我留言呢.</span>
+                <hr>
+            {% endif %}
+        </form>
+    </div>
+</section>
+
+
 {% include 'Footer.html' %}
 </body>
 

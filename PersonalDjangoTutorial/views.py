@@ -14,7 +14,11 @@ def index(request):
     return render(request, 'index.html')
 
 
-def no_found(requests):
+def not_found(requests):
+    return render(requests, '404.html')
+
+
+def page_not_found(requests, exception):
     return render(requests, '404.html')
 
 

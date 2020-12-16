@@ -46,3 +46,7 @@ def contact(request):
         Message(name=name, message=message).save()
         request.method = "GET"
     return render(request, 'blog/contact-us.html', {'message': Message.objects.all()})
+
+
+def test(request):
+    return render(request, 'blog/test.html')

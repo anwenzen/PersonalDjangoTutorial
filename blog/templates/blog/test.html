@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Testimonials - WEN-ZENG BLOG</title>
+    <meta name="description" content="WEN-ZENG BLOG">
+{% include 'Link.html' %}
+</head>
+
+<body>
+{% include 'Navigation.html' %}
+    <main class="page testimonials">
+        <section class="clean-block clean-testimonials dark">
+            <div class="container">
+                <pre><code class="language-python">def contact(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        message = request.POST.get('message')
+        Message(name=name, message=message).save()
+        request.method = "GET"
+    return render(request, 'blog/contact-us.html', {'message': Message.objects.all()})</code></pre>
+                <pre><code class="language-css">p { color: red }</code></pre>
+            </div>
+        </section>
+    </main>
+ {% include 'Footer.html' %}
+</body>
+
+</html>

@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = (
+    'spider.apps.SpiderConfig',
     'polls.apps.PollsConfig',
     'blog.apps.BlogConfig',
 

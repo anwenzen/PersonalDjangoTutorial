@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Spider - WEN-ZENG BLOG</title>
+    <meta name="description" content="WEN-ZENG BLOG">
+    {% include 'Link.html' %}
+</head>
+
+<body>
+{% include "Navigation.html" %}
+<main class="page blog-post-list">
+    <section class="clean-block clean-blog-list dark">
+        <div class="container">
+            <div class="block-heading">
+                <h2 class="text-info">Spider</h2>
+                {% if hint %}
+                <p>Crawling Data</p>
+                {% else %}
+                <p>Spider Data Preview</p>
+                {% endif %}
+                <div>
+                    <form action="/spider/data" method="post">{% csrf_token %}
+                        <input type="text" name="key_word" maxlength="10">
+                        <input type="button" onclick="" value="爬取">
+                        <input type="submit" value="post爬取">
+                    </form>
+                </div>
+            </div>
+            <div class="block-content">
+                {% if position %}
+                    {% for item in position %}
+                        <div class="row">
+                            <div class="col">
+                                <h3>{{ item.position_name }}</h3>
+                                <div class="info"><span
+                                        class="text-muted">{{ item.create_time }} by&nbsp;<span>{{ item.company_full_name }}</span></span>
+                                </div>
+                                <p>{{ item.company_label_list }}</p>
+                            </div>
+                            <div class="col">
+                                <h3 style="color: #c12e2a">{{ item.salary }}</h3>
+                                <div class="info"><span
+                                        class="text-muted">{{ item.city }}&nbsp;<span>{{ item.district }}</span></span>
+                                </div>
+                                <p>{{ item.education }} {{ item.work_year }}</p>
+                            </div>
+                        </div>
+                        <hr>
+                    {% endfor %}
+                {% else %}
+                    <div class="row" style="text-align: center">No DATA!</div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+</main>
+
+{% include 'Footer.html' %}
+
+</body>
+
+</html>

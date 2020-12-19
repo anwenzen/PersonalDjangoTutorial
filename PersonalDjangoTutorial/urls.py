@@ -27,7 +27,7 @@ urlpatterns = [
     path('download_m3u8', PersonalDjangoTutorial.views.m3u8_downloads),
     path('polls/', include('polls.urls')),
     path('blog/', include('blog.urls')),
-    # path('blog/', include('spider.urls')),
+    path('spider/', include('spider.urls')),
 ]
 
 handler404 = PersonalDjangoTutorial.views.page_not_found

@@ -1,15 +1,21 @@
-import random
-import time
-from requests import Session
+from django.http import HttpResponse
+from django.shortcuts import render, redirect
 
-from lxml import etree
-from django.shortcuts import render
-
+from .lagou_spider import Spider
 # Create your views here.
+from .models import Position
 
 
 def index(request):
-    return render(request, 'spider/index.html')
+    hint = None
+    if 'hint' in request.GET:
+        hint = 'done'
+    position = Position.objects.all()
+    return render(request, 'spider/spider.html', {'position': position, 'hint': hint})
 
 
-
+def spider_data(request):
+    if request.method == "POST":
+        key_word = request.POST.get('key_word')
+        Spider(key_word=key_word).main()
+    return redirect('/spider/index?hint=done')

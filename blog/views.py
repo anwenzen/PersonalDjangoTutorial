@@ -41,10 +41,8 @@ def post_list(request):
 
 def contact(request):
     if request.method == "POST":
-        name = request.POST.get('name')
-        message = request.POST.get('message')
-        Message(name=name, message=message).save()
-        request.method = "GET"
+        Message.objects.get_or_create(name=request.POST.get('name'), message=request.POST.get('message'))
+        return redirect('/blog/contact')
     return render(request, 'blog/contact-us.html', {'message': Message.objects.all()})
 
 

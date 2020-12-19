@@ -15,8 +15,13 @@
 <div>
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center" style="margin: 10px 0px;">Select something on your want</h1>
+            <div class="col-md-12" style="text-align: center">
+                <h2 class="text-center" style="margin: 10px 0px;">Select something to Downloads on your want</h2>
+                <form action="/download_m3u8" method="POST">{% csrf_token %}
+                    m3u8_url: <input type="url" name="m3u8_url" required>
+                    name: <input type="text" name="name" required>
+                    <input type="submit" value="尝试下载">
+                </form>
             </div>
         </div>
         <div class="row">

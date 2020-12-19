@@ -1,13 +1,17 @@
 import os
 import shutil
+
+from multiprocessing import Process
 import pandas as pd
 import pdfkit
 
 from django.http import FileResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.utils.datastructures import MultiValueDictKeyError
 from django.views.decorators.csrf import csrf_protect
 
 from PersonalDjangoTutorial.settings import BASE_DIR
+from .M3u8Download import M3u8Download
 
 
 def index(request):
@@ -18,8 +22,19 @@ def not_found(requests):
     return render(requests, '404.html')
 
 
-def page_not_found(requests, exception):
-    return render(requests, '404.html')
+def page_not_found(request, exception):
+    return render(request, '404.html')
+
+
+def m3u8_downloads(request):
+    if 'm3u8_url' in request.POST:
+        m3u8_url = request.POST.get('m3u8_url')
+        name = request.POST.get('name')
+
+        def down():
+            M3u8Download(m3u8_url, name)
+
+        Process(target=down(),)
 
 
 @csrf_protect
@@ -28,6 +43,7 @@ def downloads(request, dir_path=None):
     if request.method == "GET":
         if request.GET['path']:
             dir_path = request.GET['path']
+
     if dir_path:
         path = os.path.join(path, dir_path)
     file = os.listdir(path)
@@ -42,12 +58,12 @@ def downloads(request, dir_path=None):
                            })
             continue
         size = os.path.getsize(os.path.join(path, i))
-        if 2**20 > size:
-            size = "%.2fkB" % (size / float(2**10))
-        elif 2**30 > size >= 2**20:
-            size = "%.2fMB" % (size / float(2**20))
-        elif size >= 2**30:
-            size = "%.2fGB" % (size / float(2**30))
+        if 2 ** 20 > size:
+            size = "%.2fkB" % (size / float(2 ** 10))
+        elif 2 ** 30 > size >= 2 ** 20:
+            size = "%.2fMB" % (size / float(2 ** 20))
+        elif size >= 2 ** 30:
+            size = "%.2fGB" % (size / float(2 ** 30))
         files.append({"name": i,
                       'url': dir_path + '/' + i if dir_path else i,
                       'size': size

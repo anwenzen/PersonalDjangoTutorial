@@ -21,6 +21,6 @@ class Position(models.Model):
     job_nature = models.CharField(max_length=50, verbose_name='工作性质')
     education = models.CharField(max_length=20, verbose_name='学历要求')
     create_time = models.CharField(max_length=20, verbose_name='发布时间')
-    skill_labels = models.CharField(max_length=50, verbose_name='技能标签')
+    skill_labels = models.CharField(max_length=100, verbose_name='技能标签')
     latitude = models.CharField(max_length=12, verbose_name='纬度')
     longitude = models.CharField(max_length=12, verbose_name='经度')

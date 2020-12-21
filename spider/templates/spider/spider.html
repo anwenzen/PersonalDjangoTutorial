@@ -7,6 +7,13 @@
     <title>Spider - WEN-ZENG BLOG</title>
     <meta name="description" content="WEN-ZENG BLOG">
     {% include 'Link.html' %}
+    <script>
+        function start() {
+            let from = document.createElement('form');
+            alert('hello');
+
+        }
+    </script>
 </head>
 
 <body>
@@ -17,14 +24,14 @@
             <div class="block-heading">
                 <h2 class="text-info">Spider</h2>
                 {% if hint %}
-                <p>Crawling Data</p>
+                    <p>Crawling Data</p>
                 {% else %}
-                <p>Spider Data Preview</p>
+                    <p>Spider Data Preview</p>
                 {% endif %}
                 <div>
                     <form action="/spider/data" method="post">{% csrf_token %}
-                        <input type="text" name="key_word" maxlength="10">
-                        <input type="button" onclick="" value="爬取">
+                        <input type="text" name="key_word" id="key_word" maxlength="10">
+                        <input type="button" onclick="start()" value="爬取">
                         <input type="submit" value="post爬取">
                     </form>
                 </div>

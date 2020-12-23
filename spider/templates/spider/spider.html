@@ -8,11 +8,27 @@
     <meta name="description" content="WEN-ZENG BLOG">
     {% include 'Link.html' %}
     <script>
-        function start() {
-            let from = document.createElement('form');
-            alert('hello');
+        window.addEventListener('load', initALL, false);
+        var xhr = false;
 
+        function initALL() {
+            document.getElementById('makeTextRequest').addEventListener('click', getNewFile, false);
+            document.getElementById('makeXMLRequest').addEventListener('click', getNewFile, false);
         }
+
+        function getNewFile(evt) {
+            makeRequest(this.href);
+            evt.preventDefault();
+        }
+
+        function makeRequest(url) {
+            if (window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            } else {
+                if (window.ActiveXObject)
+                    }
+        }
+
     </script>
 </head>
 
@@ -29,7 +45,7 @@
                     <p>Spider Data Preview</p>
                 {% endif %}
                 <div>
-                    <form action="/spider/data" method="post">{% csrf_token %}
+                    <form action="" method="post" id="form">{% csrf_token %}
                         <input type="text" name="key_word" id="key_word" maxlength="10">
                         <input type="button" onclick="start()" value="爬取">
                         <input type="submit" value="post爬取">

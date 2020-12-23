@@ -10,7 +10,6 @@
     <script>
         window.addEventListener('load', initALL, false);
         var xhr = false;
-
         function initALL() {
             document.getElementById('makeTextRequest').addEventListener('click', getNewFile, false);
             document.getElementById('makeXMLRequest').addEventListener('click', getNewFile, false);
@@ -25,9 +24,46 @@
             if (window.XMLHttpRequest) {
                 xhr = new XMLHttpRequest();
             } else {
-                if (window.ActiveXObject)
+                if (window.ActiveXObject){
+                    try{
+                        xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                    }
+                    catch(e){
+
+                    }
+                }
                     }
         }
+        if (xhr){
+            xhr.addEventListener('readystatechange', showContents, false);
+            xhr.open('GET', url, true)
+            xhr.send(null);
+        }
+        else{
+            document.getElementById('updateArea').innerHTML = "sorry, but I couldn't creat an XMLHttpRequest";
+        }
+        function showContents(){
+            if (xhr.readyState == 4){
+                if (status = 200){
+                    if (xhr.responseXML && xhr.responseXML.childNodes.length > 0){
+                        var outMsg = getText(xhr.getElementsByTagName("choice")[0]);
+                    }
+                    else{
+                        var outMsg = xhr.responseText;
+                    }
+                }
+                else{
+                    var outMsg = 'There was a problem with the request' + xhr.status;
+                }
+                document.getElementById("updateArea").innerHTML = outMsg;
+            }
+            function getText(inVal){
+                if (inVal.textContent){
+                    return inVal.text;
+                }
+            }
+        }
+
 
     </script>
 </head>
@@ -47,7 +83,7 @@
                 <div>
                     <form action="" method="post" id="form">{% csrf_token %}
                         <input type="text" name="key_word" id="key_word" maxlength="10">
-                        <input type="button" onclick="start()" value="爬取">
+{#                        <input type="button" onclick="start()" value="爬取">#}
                         <input type="submit" value="post爬取">
                     </form>
                 </div>

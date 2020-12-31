@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<head>œ
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Spider - WEN-ZENG BLOG</title>
@@ -66,6 +66,13 @@
 
 
     </script>
+    <script>
+        document.getElementById('form').onsubmit = sub;
+        function sub(){
+            window.location = this;
+            return false;
+        }
+    </script>
 </head>
 
 <body>
@@ -81,7 +88,7 @@
                     <p>Spider Data Preview</p>
                 {% endif %}
                 <div>
-                    <form action="" method="post" id="form">{% csrf_token %}
+                    <form action="/spider/data" method="post" id="form">{% csrf_token %}
                         <input type="text" name="key_word" id="key_word" maxlength="10">
 {#                        <input type="button" onclick="start()" value="爬取">#}
                         <input type="submit" value="post爬取">

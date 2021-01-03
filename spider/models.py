@@ -7,7 +7,6 @@ from django.db import models
 class Position(models.Model):
     position_id = models.AutoField(verbose_name='职位ID', primary_key=True)
     position_name = models.CharField(max_length=50, verbose_name='职位名称')
-    # company_id = models.AutoField(verbose_name='公司ID')
     company_full_name = models.CharField(max_length=50, verbose_name='公司名称')
     industry_field = models.CharField(max_length=50, verbose_name='行业领域')
     company_label_list = models.CharField(max_length=100, verbose_name='福利待遇')

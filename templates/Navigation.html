@@ -6,14 +6,14 @@
             <div class="collapse navbar-collapse"
                 id="navcol-1">
                 <ul class="nav navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">主页</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/blog/index">博客</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/blog/post-list">文章列表</a></li>
                     <li class="nav-item"><a class="nav-link" href="/blog/contact">留言板</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/blog/index">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/blog/post-list">Blog-list</a></li>
                     {% if request.session.userid %}
-                        <li class="nav-item"><a class="nav-link" href="/blog/login">Logout</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blog/login">注销</a></li>
                     {% else %}
-                        <li class="nav-item"><a class="nav-link" href="/blog/login">Login</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/blog/login">登录</a></li>
                     {% endif %}
                 </ul>
             </div>

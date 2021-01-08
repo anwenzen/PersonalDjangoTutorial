@@ -46,5 +46,5 @@ def contact(request):
     return render(request, 'blog/contact-us.html', {'message': Message.objects.all()})
 
 
-def test(request):
+def code_test(request):
     return render(request, 'blog/test.html')

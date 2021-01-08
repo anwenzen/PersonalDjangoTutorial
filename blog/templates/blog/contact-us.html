@@ -18,15 +18,15 @@
                 <h2 class="text-info">留言板</h2>
             </div>
             <form action="#" method="post">{% csrf_token %}
-                <div class="form-group"><label>Your Name</label><input class="form-control" type="text" name="name"
+                <div class="form-group"><label>昵称/大名：</label><input class="form-control" type="text" name="name"
                                                                        maxlength="20" required></div>
                 {#<div class="form-group"><label>Subject</label><input class="form-control" type="text"></div>#}
                 {#<div class="form-group"><label>Email</label><input class="form-control" type="email"></div>#}
-                <div class="form-group"><label>Message</label><textarea class="form-control" rows="5" name="message"
+                <div class="form-group"><label>建议/良言：</label><textarea class="form-control" rows="5" name="message"
                                                                         maxlength="150"
                                                                         required></textarea></div>
                 <div class="form-group">
-                    <button class="btn btn-primary btn-block" type="submit">留下脚印</button>
+                    <button class="btn btn-primary btn-block" type="submit">扔一个纸团</button>
                 </div>
             </form>
         </div>

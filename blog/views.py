@@ -12,7 +12,7 @@ class Index(generic.TemplateView):
 
 def index(request):
     paper_list = Paper.objects.all()
-    return render(request, 'blog/test.html', {'paper_list': paper_list[:10:-1]})
+    return render(request, 'blog/index.html', {'paper_list': paper_list[:10:-1]})
 
 
 def registration(request):

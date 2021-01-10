@@ -9,9 +9,6 @@ class SubjectModelAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     ordering = ('no',)
 
-    def __str__(self):
-        return '123'
-
 
 class TeacherModelAdmin(admin.ModelAdmin):
     list_display = ('no', 'name', 'sex', 'birth', 'good_count', 'bad_count', 'subject')

@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, redirect
 from django.views import generic
 from .models import Paper, Message
@@ -11,8 +12,7 @@ class Index(generic.TemplateView):
 
 
 def index(request):
-    paper_list = Paper.objects.all()
-    return render(request, 'blog/index.html', {'paper_list': paper_list[:10:-1]})
+    return render(request, 'blog/index.html')
 
 
 def registration(request):
@@ -41,7 +41,8 @@ def post_list(request):
 
 def contact(request):
     if request.method == "POST":
-        Message.objects.get_or_create(name=request.POST.get('name'), message=request.POST.get('message'))
+        Message.objects.get_or_create(name=request.POST.get('name'),
+                                      message=request.POST.get('message'))
         return redirect('/blog/contact')
     return render(request, 'blog/contact-us.html', {'message': Message.objects.all()})
 

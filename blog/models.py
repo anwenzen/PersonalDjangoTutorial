@@ -1,10 +1,12 @@
+
+
 from django.db import models
 
 
 class Message(models.Model):
-    name = models.CharField(max_length=20, verbose_name='留言者名字')
-    message = models.CharField(max_length=150, verbose_name='留言内容')
-    date_time = models.DateTimeField(verbose_name='留言时间')
+    name = models.CharField(max_length=20)
+    message = models.CharField(max_length=150)
+    datetime = models.DateTimeField(auto_now=True,)
 
 
 class Paper(models.Model):

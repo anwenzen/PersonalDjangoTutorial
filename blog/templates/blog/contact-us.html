@@ -39,7 +39,7 @@
         <hr>
             {% if message %}
                 {% for item in message %}
-                    <label style="color: pink">{{ item.name }}</label> : {{ item.message }}
+                    <label style="color: pink">{{ item.name }}</label> : {{ item.message }} <span>{{ item.datetime }}</span>
                     <hr>
                 {% endfor %}
             {% else %}

@@ -4,3 +4,4 @@
 /polls/migrations/
 /spider/migrations/
 /blog/migrations/
+/db.sqlite3

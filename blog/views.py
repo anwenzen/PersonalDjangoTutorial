@@ -16,14 +16,19 @@ def index(request):
 
 
 def registration(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        password = request.POST.get('password')
+        email = request.POST.get("email")
+        print(name, password, email)
     return render(request, 'blog/registration.html')
 
 
 def login(request):
     if request.method == "POST":
-        email = request.POST.get('name')
+        name = request.POST.get('name')
         passwd = request.POST.get('passwd')
-        print(email, passwd)
+        print(name, passwd)
     return render(request, 'blog/login.html')
 
 

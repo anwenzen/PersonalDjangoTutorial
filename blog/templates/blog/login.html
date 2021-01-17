@@ -18,11 +18,11 @@
                 <h2 class="text-info">登录</h2>
                 <p>登录以获得管理权限</p>
             </div>
-            <form action="blog/login" method="post">
-                <div class="form-group"><label for="email">账号</label><input class="form-control item" type="email"
-                                                                               name="email" required></div>
+            <form action="/blog/login" method="post"> {% csrf_token %}
+                <div class="form-group"><label for="name">账号</label><input class="form-control item" type="text"
+                                                                               name="name" required></div>
                 <div class="form-group"><label for="password">密码</label><input class="form-control"
-                                                                                     type="password" name="password" required>
+                                                                                     type="password" name="passwd" required>
                 </div>
                 <div class="form-group">
                     <div class="form-check"><input class="form-check-input" type="checkbox" id="checkbox"><label

@@ -76,16 +76,16 @@ WSGI_APPLICATION = 'PersonalDjangoTutorial.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': BASE_DIR / 'db.sqlite3',
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'polls',
-        'USER': 'father',
-        'PASSWORD': 'hellokitty.618',
-        'HOST': '127.0.0.1',
-        'POST': 3306,
-        'CHARSET': 'utf8',
-        'TIME_ZONE': 'Asia/Shanghai',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': 'polls',
+        # 'USER': 'father',
+        # 'PASSWORD': 'hellokitty.618',
+        # 'HOST': '127.0.0.1',
+        # 'POST': 3306,
+        # 'CHARSET': 'utf8',
+        # 'TIME_ZONE': 'Asia/Shanghai',
     }
 }
 

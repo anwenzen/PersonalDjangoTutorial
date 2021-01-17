@@ -21,8 +21,9 @@ def registration(request):
 
 def login(request):
     if request.method == "POST":
-        email = request.POST.get('email')
+        email = request.POST.get('name')
         passwd = request.POST.get('passwd')
+        print(email, passwd)
     return render(request, 'blog/login.html')
 
 
